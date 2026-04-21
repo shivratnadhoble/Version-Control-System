@@ -57,8 +57,6 @@ jobs:
           context: ./backend
           push: false
           tags: vcs-backend:latest
-          cache-from: type=registry,ref=vcs-backend:buildcache
-          cache-to: type=registry,ref=vcs-backend:buildcache,mode=max
 
       - name: Build frontend Docker image
         uses: docker/build-push-action@v5
@@ -66,8 +64,6 @@ jobs:
           context: ./frontend
           push: false
           tags: vcs-frontend:latest
-          cache-from: type=registry,ref=vcs-frontend:buildcache
-          cache-to: type=registry,ref=vcs-frontend:buildcache,mode=max
 
   deploy:
     runs-on: ubuntu-latest
