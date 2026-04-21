@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: vcs-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: githubclone
+    networks:
+      - vcs-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: vcs-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/githubclone
+      - PORT=3000
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    depends_on:
+      - mongodb
+    networks:
+      - vcs-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: vcs-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - vcs-network
+
+networks:
+  vcs-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:

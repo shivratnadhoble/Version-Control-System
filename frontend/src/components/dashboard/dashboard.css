@@ -1,0 +1,92 @@
+#dashboard {
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    gap: 30px;
+}
+
+#dashboard aside {
+    width: 25%;
+}
+
+#dashboard main {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+aside h3 {
+    font-size: 14px;
+    color: #f0f6fc;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 8px;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    padding: 8px 0;
+    color: #8b949e;
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+aside ul li:hover {
+    color: #58a6ff;
+}
+
+.suggested-repo {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+    cursor: pointer;
+}
+
+.suggested-repo:hover {
+    border-color: #8b949e;
+}
+
+.suggested-repo h4 {
+    color: #58a6ff;
+    font-size: 14px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.suggested-repo p {
+    color: #8b949e;
+    font-size: 12px;
+    margin: 0;
+}
+
+main h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+#search input {
+    width: 100%;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    font-size: 14px;
+}
+
+#search input:focus {
+    border-color: #58a6ff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(56, 139, 253, 0.3);
+}
