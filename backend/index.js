@@ -131,10 +131,17 @@ async function startServer() {
     });
 
     // ===== CORS =====
+    let corsOrigin;
+    if (process.env.NODE_ENV === "production") {
+        corsOrigin = process.env.ALLOWED_ORIGINS 
+            ? process.env.ALLOWED_ORIGINS.split(",").filter(o => o.trim())
+            : "*";
+    } else {
+        corsOrigin = ["http://localhost:5173", "http://localhost:5174", "http://127.0.0.1:5173", "http://127.0.0.1:5174"];
+    }
+    
     const corsOptions = {
-        origin: process.env.NODE_ENV === "production" 
-            ? process.env.ALLOWED_ORIGINS?.split(",") || false 
-            : ["http://localhost:5173", "http://localhost:5174", "http://127.0.0.1:5173", "http://127.0.0.1:5174"],
+        origin: corsOrigin,
         credentials: true,
         optionsSuccessStatus: 200
     };
