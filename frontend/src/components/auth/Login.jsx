@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import githubMark from "../../assets/github-mark-white.svg";
 import "./auth.css";
 import axios from "axios";
+import API_URL from "../../api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const Login = () => {
     setError("");
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/login", { email, password });
+      const res = await axios.post(`${API_URL}/login`, { email, password });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.userId);
       setCurrentUser(res.data.userId);

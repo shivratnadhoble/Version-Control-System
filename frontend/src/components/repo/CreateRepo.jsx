@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../user/Navbar";
+import API_URL from "../../api";
 
 const CreateRepo = () => {
     const [name, setName] = useState("");
@@ -15,7 +16,7 @@ const CreateRepo = () => {
         setLoading(true);
         try {
             const userId = localStorage.getItem("userId");
-            await axios.post("http://localhost:3000/repo/create", {
+            await axios.post(`${API_URL}/repo/create`, {
                 name,
                 description,
                 visibility,

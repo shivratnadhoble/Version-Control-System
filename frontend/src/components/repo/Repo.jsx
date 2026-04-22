@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../user/Navbar";
+import API_URL from "../../api";
 
 const Repo = () => {
     const [repositories, setRepositories] = useState([]);
@@ -8,7 +9,7 @@ const Repo = () => {
         const fetchRepositories = async () => {
             try {
                 const userId = localStorage.getItem("userId");
-                const response = await fetch(`http://localhost:3000/repo/user/${userId}`);
+                const response = await fetch(`${API_URL}/repo/user/${userId}`);
                 const data = await response.json();
                 setRepositories(data.repositories || []);
             } catch (err) {

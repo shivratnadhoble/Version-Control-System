@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import githubMark from "../../assets/github-mark-white.svg";
 import "./auth.css";
 import axios from "axios";
+import API_URL from "../../api";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -20,7 +21,7 @@ const Signup = () => {
     setError("");
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/signup", { username: name, email, password });
+      const res = await axios.post(`${API_URL}/signup`, { username: name, email, password });
       localStorage.setItem("token", res.data.token);
       if (res.data.userId) {
           localStorage.setItem("userId", res.data.userId);
