@@ -7,7 +7,7 @@ const rateLimit = require("express-rate-limit");
 const http = require("http");
 const { Server } = require("socket.io");
 const swaggerUi = require("swagger-ui-express");
-const mainRouter = require("./routes/main-router");
+const mainRouter = require("./routes/main.router");
 const { swaggerSpec } = require("./config/swagger");
 
 const yargs = require("yargs");
